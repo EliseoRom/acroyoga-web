@@ -35,10 +35,9 @@ export default function Links() {
   const { t } = useT();
   return (
     <section id="links" className="links">
-      <header className="section-head">
+      <header className="section-head links-head">
         <span className="kicker"><span className="kicker-bar"/> {t.links.kicker}</span>
-        <h2>
-          {t.links.title_a}<em>{t.links.title_aem}</em>{t.links.title_b}<br/>
+        <h2 className="links-title">
           {t.links.title_c}
         </h2>
       </header>

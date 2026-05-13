@@ -14,10 +14,12 @@ export default function Gallery() {
 
   return (
     <section className="gallery">
-      <header className="section-head" style={{ width: "var(--max)", margin: "0 auto 56px" }}>
-        <span className="kicker"><span className="kicker-bar"/> {t.gallery.kicker}</span>
-        <h2>{t.gallery.title_a}<br/>{t.gallery.title_b}<em>{t.gallery.title_bem}</em>{t.gallery.title_c}</h2>
-      </header>
+      <div style={{ width: "var(--max)", margin: "0 auto" }}>
+        <header className="section-head" style={{ marginBottom: "56px" }}>
+          <span className="kicker"><span className="kicker-bar"/> {t.gallery.kicker}</span>
+          <h2>{t.gallery.title}</h2>
+        </header>
+      </div>
 
       <div className="gallery-carousel">
         <div className="gallery-track">

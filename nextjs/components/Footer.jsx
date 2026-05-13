@@ -8,7 +8,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="foot-top">
         <div className="foot-mark">
-          <AcroMark size={36} color="#F4F1EA"/>
+          <img src="/logo.png" alt="Logo" style={{ width: 48, height: 48, borderRadius: "50%", objectFit: "contain", background: "#F9F9FA", transform: "scale(1.4)" }} />
           <div>
             <div className="foot-name">{t.footer.name}</div>
             <div className="foot-sub">{t.footer.sub}</div>

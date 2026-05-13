@@ -18,7 +18,7 @@ export default function Nav() {
     <>
       <nav className={"nav" + (scrolled ? " nav-scrolled" : "")}>
         <a className="nav-brand" href="#">
-          <AcroMark size={26} color="currentColor"/>
+          <img src="/logo.png" alt="Logo" style={{ width: 34, height: 34, borderRadius: "50%", objectFit: "contain", background: "#F9F9FA", transform: "scale(1.4)" }} />
           <span>Acroyoga · PC</span>
         </a>
         <div className="nav-links">

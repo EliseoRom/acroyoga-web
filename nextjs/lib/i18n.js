@@ -16,7 +16,7 @@ export const STRINGS = {
     links: {
       kicker: "01 / Comunidad",
       title_a: "Entra donde ", title_aem: "quieras", title_b: ".",
-      title_c: "Todos los caminos llevan al jam.",
+      title_c: "Todos los caminos te llevan a jugar con el Acroyoga.",
       items: {
         ig: { title: "Instagram Acroyoga", sub: "Síguenos para más contenido", cta: "Seguir" },
         wa: { title: "WhatsApp comunidad", sub: "Únete al grupo oficial",      cta: "Unirme" },
@@ -26,6 +26,7 @@ export const STRINGS = {
     services: {
       kicker: "02 / Servicios",
       title_a: "Nuestros ", title_aem: "3 servicios", title_b: ".",
+      subtitle: "Para realizar estas actividades no se requiere experiencia previa en la disciplina.",
       cards: [
         {
           t: "Experiencias en Hoteles y Resorts",
@@ -52,8 +53,8 @@ export const STRINGS = {
       ],
     },
     gallery: {
-      kicker: "04 / Lente",
-      title_a: "El último mes,", title_b: " a través de la ", title_bem: "comunidad", title_c: ".",
+      kicker: "04 / Galería",
+      title: "Últimas actividades y eventos en Punta Cana",
       slots: ["Jam outdoor", "Standing acro", "L-base", "Team building", "Plaza San Juan", "Workshop"],
     },
     schedule: {

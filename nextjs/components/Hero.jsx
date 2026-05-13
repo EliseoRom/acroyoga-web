@@ -1,13 +1,48 @@
 "use client";
+import { useState, useEffect } from "react";
 import { useT } from "@/lib/LangContext";
 import AcroMark from "./AcroMark";
 import { Icon } from "./Icons";
 import PalmSilhouette from "./PalmSilhouette";
 
-function Stat({ label, value, highlight }) {
+function Stat({ label, target, suffix = "", duration = 2000, highlight }) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const end = parseFloat(target);
+    if (isNaN(end)) {
+      setCount(target);
+      return;
+    }
+    
+    let startTime;
+    const animate = (currentTime) => {
+      if (!startTime) startTime = currentTime;
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      const easeOut = 1 - Math.pow(1 - progress, 4);
+      const currentVal = end * easeOut;
+      
+      if (target.toString().includes(".")) {
+        setCount(currentVal.toFixed(1));
+      } else {
+        setCount(Math.floor(currentVal));
+      }
+      
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        setCount(target);
+      }
+    };
+    
+    requestAnimationFrame(animate);
+  }, [target, duration]);
+
   return (
     <div className={"stat" + (highlight ? " stat-hi" : "")}>
-      <div className="stat-val">{value}</div>
+      <div className="stat-val">{count}{suffix}</div>
       <div className="stat-lbl">{label}</div>
     </div>
   );
@@ -16,6 +51,28 @@ function Divider() { return <span className="stat-div" aria-hidden="true" />; }
 
 export default function Hero() {
   const { t } = useT();
+  const [clickCount, setClickCount] = useState(0);
+  const [toastMsg, setToastMsg] = useState("");
+
+  const handleLogoClick = () => {
+    const newCount = clickCount + 1;
+    setClickCount(newCount);
+    if (newCount === 1) setToastMsg("¿Por qué haces tantos clicks? 😄");
+    else if (newCount === 2) setToastMsg("¡Lo hiciste de nuevo! 👀");
+    else if (newCount >= 3) {
+      setToastMsg("¡Te esperamos en las próximas actividades! 🤸‍♀️");
+      setClickCount(0);
+    }
+  };
+
+  useEffect(() => {
+    if (toastMsg) {
+      const duration = clickCount === 0 ? 4000 : 2500;
+      const timer = setTimeout(() => setToastMsg(""), duration);
+      return () => clearTimeout(timer);
+    }
+  }, [toastMsg, clickCount]);
+
   return (
     <section className="hero">
       <div className="hero-bg">
@@ -30,7 +87,7 @@ export default function Hero() {
           <span className="dot" /> {t.hero.pill}
         </div>
 
-        <div className="logo-wrap">
+        <div className="logo-wrap" onClick={handleLogoClick} style={{ cursor: "pointer" }}>
           <div className="logo-ring">
             <div className="logo-inner">
               <img 
@@ -40,7 +97,9 @@ export default function Hero() {
               />
             </div>
           </div>
-          <AcroMark size={28} color="#F4F1EA" />
+          <div className={`fun-toast ${toastMsg ? "show" : ""}`}>
+            {toastMsg}
+          </div>
         </div>
 
         <h1 className="wordmark">
@@ -55,11 +114,11 @@ export default function Hero() {
         </p>
 
         <div className="stats">
-          <Stat label={t.hero.stats.posts} value="257" />
+          <Stat label={t.hero.stats.posts} target="257" duration={2500} />
           <Divider/>
-          <Stat label={t.hero.stats.followers} value="3.5k" highlight />
+          <Stat label={t.hero.stats.followers} target="3.5" suffix="k" highlight duration={3500} />
           <Divider/>
-          <Stat label={t.hero.stats.acro} value="180+" />
+          <Stat label={t.hero.stats.acro} target="180" suffix="+" duration={5500} />
         </div>
 
         <a href="#links" className="primary-cta">
