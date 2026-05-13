@@ -1,6 +1,6 @@
 export const STRINGS = {
   es: {
-    nav: { links: "Links", services: "Servicios", practice: "Práctica", schedule: "Agenda · Próximamente", wa: "WhatsApp" },
+    nav: { links: "Links", services: "Servicios", practice: "Práctica", schedule: "Agenda", schedule_sub: "Próximamente", wa: "WhatsApp" },
     hero: {
       pill: "En vivo",
       wordmarkA: "ACRO", wordmarkAem: "yoga",
@@ -27,6 +27,7 @@ export const STRINGS = {
       kicker: "02 / Servicios",
       title_a: "Nuestros ", title_aem: "3 servicios", title_b: ".",
       subtitle: "Para realizar estas actividades no se requiere experiencia previa en la disciplina.",
+      cta: "Contratar servicio",
       cards: [
         {
           t: "Experiencias en Hoteles y Resorts",
@@ -54,7 +55,7 @@ export const STRINGS = {
     },
     gallery: {
       kicker: "04 / Galería",
-      title: "Últimas actividades y eventos en Punta Cana",
+      title: "Actividades y eventos en Punta Cana",
       slots: ["Jam outdoor", "Standing acro", "L-base", "Team building", "Plaza San Juan", "Workshop"],
     },
     schedule: {
@@ -82,7 +83,7 @@ export const STRINGS = {
     locations: ["P. CANA 🇩🇴", "SANTIAGO 🇩🇴", "SDOM 🇩🇴", "ARMONÍA", "BLUEMALL", "EVENTOS", "WORKSHOPS", "www.emprendeagil.com", "www.canalhumano.com"],
   },
   en: {
-    nav: { links: "Links", services: "Services", practice: "Practice", schedule: "Schedule · Coming soon", wa: "WhatsApp" },
+    nav: { links: "Links", services: "Services", practice: "Practice", schedule: "Schedule", schedule_sub: "Coming soon", wa: "WhatsApp" },
     hero: {
       pill: "Live",
       wordmarkA: "ACRO", wordmarkAem: "yoga",
@@ -108,6 +109,8 @@ export const STRINGS = {
     services: {
       kicker: "02 / Services",
       title_a: "Our ", title_aem: "3 services", title_b: ".",
+      subtitle: "No previous experience in the discipline is required to participate in these activities.",
+      cta: "Hire service",
       cards: [
         {
           t: "Hotel & Resort Experiences",
@@ -135,7 +138,7 @@ export const STRINGS = {
     },
     gallery: {
       kicker: "04 / Lens",
-      title_a: "Last month,", title_b: " through the eyes of the ", title_bem: "community", title_c: ".",
+      title: "Activities and events in Punta Cana",
       slots: ["Outdoor jam", "Standing acro", "L-base", "Team building", "Plaza San Juan", "Workshop"],
     },
     schedule: {

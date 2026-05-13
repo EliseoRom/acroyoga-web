@@ -1,8 +1,8 @@
 /* ============== Base & tokens ============== */
 :root {
-  --bg:        #0F2A1D;
-  --bg-deep:   #08180F;
-  --bg-card:   #11321F;
+  --bg:        #153A28;
+  --bg-deep:   #0D2216;
+  --bg-card:   #1A4530;
   --ink:       #F4F1EA;
   --ink-dim:   #C7C2B6;
   --ink-mute:  #8C8B82;
@@ -152,6 +152,13 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; }
   .mobile-links a {
     font-family: var(--font-display); font-size: 28px; font-weight: 800;
     text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink);
+  }
+  .mobile-schedule-link {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    text-align: center;
+  }
+  .mobile-soon {
+    font-size: 15px; color: #4da6ff; letter-spacing: 0.15em;
   }
   .mobile-cta {
     display: flex; align-items: center; gap: 8px;
@@ -340,7 +347,13 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; }
   margin: 0;
 }
 .tagline strong { color: var(--ink); font-weight: 600; }
-.tagline em { font-size: 1.25em; }
+.tagline em { 
+  display: inline-block; 
+  margin-top: 6px; 
+  font-size: 1.45em; 
+  color: #FFFFFF; 
+  font-weight: 800; 
+}
 
 .stats {
   display: inline-flex; align-items: stretch; gap: 0;
@@ -693,14 +706,18 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; }
   position: relative;
   display: flex;
 }
-.gallery-track {
+.gallery-track-js {
   display: flex;
   gap: 24px;
-  width: max-content;
-  animation: scrollGallery 60s linear infinite;
+  width: 100%;
+  overflow-x: auto;
+  scroll-behavior: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  padding-bottom: 24px;
 }
-.gallery-track:hover {
-  animation-play-state: paused;
+.gallery-track-js::-webkit-scrollbar {
+  display: none;
 }
 .gallery-item {
   height: 450px;
@@ -723,10 +740,7 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; }
   border-radius: 22px;
 }
 
-@keyframes scrollGallery {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(calc(-50% - 12px)); }
-}
+
 
 @media (max-width: 900px) {
   .gallery-item { height: 380px; }

@@ -25,7 +25,7 @@ export default function Nav() {
           <a href="#links">{t.nav.links}</a>
           <a href="#services">{t.nav.services}</a>
           <a href="#practice">{t.nav.practice}</a>
-          <a href="#schedule">{t.nav.schedule}</a>
+          <a href="#schedule">{t.nav.schedule} · {t.nav.schedule_sub}</a>
         </div>
         <div className="nav-right">
           <button className="lang-toggle" onClick={toggle} aria-label="Toggle language">
@@ -49,7 +49,10 @@ export default function Nav() {
           <a href="#links" onClick={() => setMenuOpen(false)}>{t.nav.links}</a>
           <a href="#services" onClick={() => setMenuOpen(false)}>{t.nav.services}</a>
           <a href="#practice" onClick={() => setMenuOpen(false)}>{t.nav.practice}</a>
-          <a href="#schedule" onClick={() => setMenuOpen(false)}>{t.nav.schedule}</a>
+          <a href="#schedule" className="mobile-schedule-link" onClick={() => setMenuOpen(false)}>
+            {t.nav.schedule}
+            <span className="mobile-soon">{t.nav.schedule_sub}</span>
+          </a>
           <a href="https://chat.whatsapp.com/KJmKPhyVxrK4f6PLDDCXFS" className="mobile-cta" target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>
             <Icon.WhatsApp size={18}/> {t.nav.wa}
           </a>

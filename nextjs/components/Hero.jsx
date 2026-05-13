@@ -53,6 +53,8 @@ export default function Hero() {
   const { t } = useT();
   const [clickCount, setClickCount] = useState(0);
   const [toastMsg, setToastMsg] = useState("");
+  const [statClicks, setStatClicks] = useState(0);
+  const [statToast, setStatToast] = useState("");
 
   const handleLogoClick = () => {
     const newCount = clickCount + 1;
@@ -63,6 +65,17 @@ export default function Hero() {
       setToastMsg("¡Te esperamos en las próximas actividades! 🤸‍♀️");
       setClickCount(0);
     }
+  };
+
+  const handleStatClick = () => {
+    const nextClicks = statClicks + 1;
+    setStatClicks(nextClicks);
+    if (nextClicks === 1) setStatToast("¿Qué onda? 🤙");
+    if (nextClicks === 2) {
+      setStatToast("Hacete acroyogui 🤸‍♀️");
+      setStatClicks(0);
+    }
+    setTimeout(() => setStatToast(""), 3000);
   };
 
   useEffect(() => {
@@ -113,12 +126,17 @@ export default function Hero() {
           <em>{t.hero.tagline_d}</em>
         </p>
 
-        <div className="stats">
-          <Stat label={t.hero.stats.posts} target="257" duration={2500} />
-          <Divider/>
-          <Stat label={t.hero.stats.followers} target="3.5" suffix="k" highlight duration={3500} />
-          <Divider/>
-          <Stat label={t.hero.stats.acro} target="180" suffix="+" duration={5500} />
+        <div style={{ position: "relative", display: "inline-block" }}>
+          <div className="stats" onClick={handleStatClick} style={{ cursor: "pointer" }}>
+            <Stat label={t.hero.stats.posts} target="257" duration={2500} />
+            <Divider/>
+            <Stat label={t.hero.stats.followers} target="3.5" suffix="k" highlight duration={3500} />
+            <Divider/>
+            <Stat label={t.hero.stats.acro} target="180" suffix="+" duration={5500} />
+          </div>
+          <div className={`fun-toast ${statToast ? "show" : ""}`} style={{ top: "-30px", left: "50%" }}>
+            {statToast}
+          </div>
         </div>
 
         <a href="#links" className="primary-cta">
