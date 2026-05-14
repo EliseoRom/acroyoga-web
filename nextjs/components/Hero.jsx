@@ -49,6 +49,40 @@ function Stat({ label, target, suffix = "", duration = 2000, highlight }) {
 }
 function Divider() { return <span className="stat-div" aria-hidden="true" />; }
 
+function TypewriterTagline({ a, b, c }) {
+  const [text, setText] = useState({ a: "", b: "", c: "" });
+
+  useEffect(() => {
+    let iA = 0, iB = 0, iC = 0;
+    let timer;
+    const type = () => {
+      if (iA < a.length) {
+        iA++;
+        setText(prev => ({ ...prev, a: a.slice(0, iA) }));
+        timer = setTimeout(type, 35);
+      } else if (iB < b.length) {
+        iB++;
+        setText(prev => ({ ...prev, b: b.slice(0, iB) }));
+        timer = setTimeout(type, 35);
+      } else if (iC < c.length) {
+        iC++;
+        setText(prev => ({ ...prev, c: c.slice(0, iC) }));
+        timer = setTimeout(type, 35);
+      }
+    };
+    timer = setTimeout(type, 300); // Initial delay
+    return () => clearTimeout(timer);
+  }, [a, b, c]);
+
+  return (
+    <>
+      <span>{text.a}</span>
+      <strong>{text.b}</strong>
+      <span>{text.c}</span>
+    </>
+  );
+}
+
 export default function Hero() {
   const { t } = useT();
   const [clickCount, setClickCount] = useState(0);
@@ -67,12 +101,22 @@ export default function Hero() {
     }
   };
 
+  const statMessages = [
+    "¿Qué onda? 🤙",
+    "Hacete acroyogui 🤸‍♀️",
+    "¿Tenés un michi? 🐈",
+    "¿O tenés 2 michis? 🐈🐈",
+    "¿Cuántos michis tenés? 🤔",
+    "Si sos acroyogui tomás mate 🧉",
+    "¿Cuántos mensajes ocultos encontraste? 🕵️‍♂️"
+  ];
+
   const handleStatClick = () => {
     const nextClicks = statClicks + 1;
     setStatClicks(nextClicks);
-    if (nextClicks === 1) setStatToast("¿Qué onda? 🤙");
-    if (nextClicks === 2) {
-      setStatToast("Hacete acroyogui 🤸‍♀️");
+    const msgIndex = Math.min(nextClicks - 1, statMessages.length - 1);
+    setStatToast(statMessages[msgIndex]);
+    if (nextClicks >= statMessages.length) {
       setStatClicks(0);
     }
     setTimeout(() => setStatToast(""), 3000);
@@ -121,7 +165,7 @@ export default function Hero() {
         </h1>
 
         <p className="tagline">
-          {t.hero.tagline_a}<strong>{t.hero.tagline_b}</strong>{t.hero.tagline_c}
+          <TypewriterTagline a={t.hero.tagline_a} b={t.hero.tagline_b} c={t.hero.tagline_c} />
           <br/>
           <em>{t.hero.tagline_d}</em>
         </p>

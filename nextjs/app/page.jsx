@@ -8,10 +8,12 @@ import Gallery from "@/components/Gallery";
 import Schedule from "@/components/Schedule";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
+import GlobalEasterEgg from "@/components/GlobalEasterEgg";
 
 export default function Page() {
   return (
     <main className="app palette-forest density-comfy links-card">
+      <GlobalEasterEgg />
       <Nav />
       <Hero />
       <Marquee />
